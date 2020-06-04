@@ -7,7 +7,7 @@ import createSagaMiddleware from "redux-saga";
 
 import Counter from "./Counter";
 import reducer from "./reducers";
-import { helloSaga } from "./sagas";
+import rootSaga, { helloSaga } from "./sagas";
 
 // create a middleware using the factory function
 // createSagaMiddleware exported by the redux-saga library
@@ -17,7 +17,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
 // Then we can start our Saga.
-sagaMiddleware.run(helloSaga);
+sagaMiddleware.run(rootSaga);
 
 const action = (type) => store.dispatch({ type });
 
